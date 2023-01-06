@@ -1,0 +1,16 @@
+<div *ngFor="let feeding of feedingHistory" class="input-icon-individual-container">
+    <mat-card class="feeding-card">
+        <mat-card-title>
+            <button mat-mini-fab class="icon-fab-button" aria-label="Example icon button with a menu icon">
+                <mat-icon fontSet="material-symbols-outlined">pediatrics</mat-icon>
+            </button>
+            {{feeding.Start | date:'shortTime'}}
+        </mat-card-title>
+        <mat-card-subtitle>{{feeding.Start | date:'shortDate'}}</mat-card-subtitle>
+        <mat-card-content>
+            <div>
+                <h1>Milliliters Consumed: {{feeding.OuncesConsumed}} ml</h1>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

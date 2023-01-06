@@ -1,0 +1,26 @@
+<div>
+    <mat-toolbar class="toolbar">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Baby Tracker</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar>
+</div>
+<div class="input-icons-container">
+    <div *ngFor="let inputIcon of inputIconList" class="input-icon-individual-container">
+        <mat-card class="icon-card" (click)="openDialogs(inputIcon.title)">
+            <mat-card-content>
+                <div class="icons-style">
+                    <mat-icon fontSet="material-symbols-outlined" class="input-icons">{{inputIcon.icon}}</mat-icon>
+                </div>
+                <div class="input-title">
+                    {{inputIcon.title}}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+<div>
+    <app-current-feeding-status></app-current-feeding-status>
+</div>

@@ -3,7 +3,23 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  Default: {
+    BabyID: 1,
+    ouncesConsumed: 90,
+    formulaID: 2,
+  },
+  formulas: [
+    {
+      name: 'Similac',
+      id: 1,
+    },
+    {
+      name: 'Similac Ready to Feed',
+      id: 2
+    }
+  ],
+  apiUrl: '192.168.68.70:8080'
 };
 
 /*

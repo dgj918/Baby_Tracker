@@ -1,0 +1,36 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.input-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.input-icon-individual-container{
+    margin-top: 5%;
+}
+
+.icon-card {
+    min-width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.icons-style{
+    font-variation-settings: 'FILL' 1, 'wght' 1000, 'GRAD' 0, 'opsz' 48;
+}
+
+.input-icons{
+    font-size: 30px;
+    color: #5BC0F8;
+}
+
+.input-title{
+    color: #144272;
+}
+
+.toolbar{
+    color: #144272;
+}

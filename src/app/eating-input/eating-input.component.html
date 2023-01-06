@@ -1,0 +1,43 @@
+<mat-dialog-content>
+    <form [formGroup]="feedingFormGroup">
+        <mat-form-field appearance="fill">
+            <mat-label>Feed Date</mat-label>
+            <div class="date_container">
+                <input 
+                matInput 
+                [matDatepicker]="picker"
+                formControlName="selectedDate"
+                >
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            </div>
+            <mat-datepicker #picker
+            [touchUi]="true"
+            ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Start Time</mat-label>
+            <input matInput type="time" formControlName="Start" value="timeNow" placeholder="timeNow">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>End Time</mat-label>
+            <input matInput type="time" formControlName="End" value="07:29:00" placeholder="07:29:00">
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Formula Type</mat-label>
+            <mat-select formControlName="FormulaID" name="formula">
+            <mat-option *ngFor="let formula of formulas" [value]="formula.id">
+                {{formula.name}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Milliliters Consumed</mat-label>
+            <input matInput type="number" formControlName="OuncesConsumed">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="submitFeeding()" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>
