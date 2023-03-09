@@ -62,7 +62,7 @@ func main() {
 
   router.Use(cors.Default())
   router.Use(HealthCheck())
-  router.Use(TokenAuthMiddleware())
+  // router.Use(TokenAuthMiddleware())
 
   router.GET("/baby", baby.GetBabies)
   router.GET("/baby/:babyID", baby.GetBaby)
