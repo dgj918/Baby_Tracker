@@ -3,6 +3,7 @@ package main
 import (
   "log"
   "os"
+  "fmt"
   "github.com/gin-gonic/gin"
   "github.com/gin-contrib/cors"
   "gjohnson/Baby_Tracker_Api/Baby_Tracker/baby"
@@ -30,18 +31,28 @@ func TokenAuthMiddleware() gin.HandlerFunc {
 
   return func(c *gin.Context) {
     token := c.Request.FormValue("api_token")
-
-    if token == "" {
-      respondWithError(c, 401, "API token required")
-      return
+    
+    if (c.Request.URL.Path != "/healthcheck") {
+      if token == "" {
+        respondWithError(c, 401, "API token required")
+        return
+      }
+  
+      if token != requiredToken {
+        respondWithError(c, 401, "Invalid API token")
+        return
+      }
     }
-
-    if token != requiredToken {
-      respondWithError(c, 401, "Invalid API token")
-      return
-    }
-
     c.Next()
+  }
+}
+
+func HealthCheck() gin.HandlerFunc {
+  return func(c *gin.Context) {
+    fmt.Println(c.Request.URL.Path)
+    if (c.Request.URL.Path == "/healthcheck") {
+      c.JSON(200, "Health Check")
+    }
   }
 }
  
@@ -50,6 +61,7 @@ func main() {
   router := gin.Default()
 
   router.Use(cors.Default())
+  router.Use(HealthCheck())
   router.Use(TokenAuthMiddleware())
 
   router.GET("/baby", baby.GetBabies)
