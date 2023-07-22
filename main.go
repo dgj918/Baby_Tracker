@@ -95,8 +95,13 @@ func main() {
   router.DELETE("/diapers/:diaperID", diapers.DeleteDiaper)
 
   router.GET("/sleep", sleep.GetAllSleep)
+  router.GET("sleep/inprogress/:babyID", sleep.GetInProgressSleep)
+  router.GET("sleep/issleepinprogress/:babyID", sleep.GetIsSleepInProgress)
+  router.GET("/sleep/subset/:num", sleep.GetSleepCurrentSubset)
   router.GET("/sleep/:sleepID", sleep.GetSleep)
   router.POST("/sleep", sleep.PostSleep)
+  router.PUT("sleep/start/:babyID", sleep.PutStartSleep)
+  router.PUT("sleep/stop/:babyID", sleep.PutStopSleep)
   router.PUT("/sleep", sleep.PutSleep)
   router.DELETE("/sleep/:sleepID", sleep.DeleteSleep)
 
