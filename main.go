@@ -15,6 +15,9 @@ import (
   "gjohnson/Baby_Tracker_Api/Baby_Tracker/sleep"
   "gjohnson/Baby_Tracker_Api/Baby_Tracker/tummytime"
   "gjohnson/Baby_Tracker_Api/Baby_Tracker/feeding"
+  "gjohnson/Baby_Tracker_Api/Baby_Tracker/height"
+  "gjohnson/Baby_Tracker_Api/Baby_Tracker/weight"
+  "gjohnson/Baby_Tracker_Api/Baby_Tracker/alergymixin"
 )
 
 func respondWithError(c *gin.Context, code int, message interface{}) {
@@ -118,6 +121,19 @@ func main() {
   router.POST("/feeding", feeding.PostFeeding)
   router.PUT("/feeding", feeding.PutFeeding)
   router.DELETE("/feeding/:feedingID", feeding.DeleteFeeding)
+
+  router.GET("/weight/:babyID", weight.GetWeight)
+  router.POST("/weight/:babyID", weight.PostWeight)
+  router.PUT("/weight/:weightID", weight.PutWeight)
+  router.DELETE("/weight/:weightID", weight.DeleteWeight)
+
+  router.GET("/height/:babyID", height.GetHeight)
+  router.POST("/height/:babyID", height.PostHeight)
+  router.PUT("/height/:heightID", height.PutHeight)
+  router.DELETE("/height/:heightID", height.DeleteHeight)
+
+  router.GET("/alergymixin/:babyID", alergymixin.GetMixin)
+  router.POST("/alergymixin/:babyID", alergymixin.PostMixin)
 
   router.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
